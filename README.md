@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# API Creation project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In this project we were supposed to create our own API that's ready for applications to consume, and on the way explore the different technology stacks that are available to make this happen. I ended up using the MERN stack which includes: MongoDB for data persistance, Express.js and Node.js for the back end and React for a front end demo website that consumes the API.
 
-## Available Scripts
+## The Data
 
-In the project directory, you can run:
+The API I decided to create and work with consists of random quotes I insterted into the database and made available through sending a request to a server.
 
-### `yarn start`
+The quotes are stored as objects with following 
+properties:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    {
+      id: the quotes id
+      quote: content of the quote
+      author: person who said it
+      tags: an array of tags fitting for the quote
+    }
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## The API
 
-### `yarn test`
+Path to the API: https://mern-quote-base.herokuapp.com/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The root path / will return all of the quotes present in the database.
 
-### `yarn build`
+The API can filter the quotes retrieved by calling the /filter page with different tag names added to the query string.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Examples:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+/filter?tags=space - gets you all quotes with the 'space' tag
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+/filter?tags=space,technology - gets you all quotes with the 'space' and 'technology' tags.
 
-### `yarn eject`
+## The Front End
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Path to the demo website: 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The front end makes fetch requests to the server which will in turn retrieve the data from the database and then send it back to the front end. The frontpage will automatically fetch all the quotes are available and then you can filter them out with the available tag buttons. When those are clicked it will redirect to a different page where another fetch called is made but with filtering options that the server handles.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+A good portion of creating the front-end went into figuring out how to use the query string and thats where the 'query-string' module was helpful. Each time the user clicks a tag to filter out the quotes it gets added to the query string of the url. That value is then sent to the API and is used there to make appropriate find call to MongoDB.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+In the end this was a good exercise in creating a front-end that communicates with a back-end which uses MongoDB for it's data. 
