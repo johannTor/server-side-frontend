@@ -32,7 +32,7 @@ Examples:
 
 ## The Front End
 
-Path to the demo website: 
+Path to the demo website: https://mern-quote-site.netlify.app/
 
 The front end makes fetch requests to the server which will in turn retrieve the data from the database and then send it back to the front end. The frontpage will automatically fetch all the quotes are available and then you can filter them out with the available tag buttons. When those are clicked it will redirect to a different page where another fetch called is made but with filtering options that the server handles.
 
