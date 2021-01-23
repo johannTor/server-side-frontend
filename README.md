@@ -38,4 +38,6 @@ The front end makes fetch requests to the server which will in turn retrieve the
 
 A good portion of creating the front-end went into figuring out how to use the query string and thats where the 'query-string' module was helpful. Each time the user clicks a tag to filter out the quotes it gets added to the query string of the url. That value is then sent to the API and is used there to make appropriate find call to MongoDB.
 
-In the end this was a good exercise in creating a front-end that communicates with a back-end which uses MongoDB for it's data. 
+I used Heroku to deploy the server and Netlify for the demo website.
+
+In the end this was a good exercise in creating a front-end that communicates with a back-end which connects to MongoDB for the data.
