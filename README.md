@@ -17,7 +17,7 @@ properties:
     }
 
 ## The API
-
+Path to code: https://github.com/johannTor/server-side-backend
 Path to the API: https://mern-quote-base.herokuapp.com/
 
 The root path / will return all of the quotes present in the database.
